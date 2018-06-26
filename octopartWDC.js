@@ -2,50 +2,44 @@
     var myConnector = tableau.makeConnector();
 
     myConnector.getSchema = function (schemaCallback) {
-	    var cols = [{
-	        id: "uid",
-	        dataType: tableau.dataTypeEnum.string
-	    }, 
-	     {
-	        id: "name",
-	        dataType: tableau.dataTypeEnum.string
-	    }, {
-	        id: "is_authorized",
-	        dataType: tableau.dataTypeEnum.bool
-	    }];
+    var cols = [{
+        id: "hits",
+        dataType: tableau.dataTypeEnum.string
+    }];
 
-	    var tableSchema = {
-	        id: "Octopart Part Search",
-	        columns: cols
+    var tableSchema = {
+        id: "OctopartData",
+        alias: "This is a search for the part with mpn of SN74S74N",
+        columns: cols
     };
 
     schemaCallback([tableSchema]);
 };
 
     myConnector.getData = function(table, doneCallback) {
-	    $.getJSON("https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=[{%22mpn%22:%22SN74S74N%22}]&pretty_print=true", function(resp) {
-	        var feat = resp.features,
-	            tableData = [];
+    $.getJSON("https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=[{%22mpn%22:%22SN74S74N%22}]&pretty_print=true", function(resp) {
+        var feat = resp.features,
+            tableData = [];
 
-	        // Iterate over the JSON object
-	        for (var i = 0, len = feat.length; i < len; i++) {
-	            tableData.push({
-	                "uid": feat[i].uid,
-	                "name": feat[i].properties.name,
-	                "title": feat[i].properties.title
-	                
-	            });
-	        }
+        // Iterate over the JSON object
+        for (var i = 0, len = feat.length; i < len; i++) {
+            tableData.push({
+                "hits": feat[i],
+                "mag": feat[i].properties.mag,
+                "title": feat[i].properties.title,
+                "location": feat[i].geometry
+            });
+        }
 
-	        table.appendRows(tableData);
-	        doneCallback();
+        table.appendRows(tableData);
+        doneCallback();
     });
 };
 
     tableau.registerConnector(myConnector);
     $(document).ready(function () {
     $("#submitButton").click(function () {
-        tableau.connectionName = "Octopart API";
+        tableau.connectionName = "Octopart Data";
         tableau.submit();
     });
 });
