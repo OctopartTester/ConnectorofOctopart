@@ -11,6 +11,9 @@
             id: "name",
             alias: "manufacturer",
             dataType: tableau.dataTypeEnum.string
+        }, {
+            id:"octopart_url",
+            dataType: tableau.dataTypeEnum.string
         }];
 
         var tableSchema = {
@@ -36,7 +39,8 @@
                 tableData.push({
 
                     "uid": feat[i].item.brand.uid,
-                    "name": feat[i].item.manufacturer.name
+                    "name": feat[i].item.manufacturer.name,
+                    "octopart_url": feat[i].item.octopart_url
                    
                 });
                 tableau.log('after te push')
