@@ -28,7 +28,7 @@
     // Download the data
     myConnector.getData = function(table, doneCallback) {
 
-        $.getJSON("https://octopart.com/api/v3/parts/search?q=texas&apikey=80dfab31", function(resp) {
+        $.getJSON("http://octopart.com/api/v3/parts/search?q=texas&apikey=80dfab31", function(resp) {
             var feat = resp.results,
                 tableData = [];
                  
