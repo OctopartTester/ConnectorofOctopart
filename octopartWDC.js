@@ -39,7 +39,6 @@
             for (var i = 0, len = feat.length; i < len; i++) {
                 
                 tableData.push({
- tableau.log(feat[i].items.brand.uid)
                     "uid": feat[i].items.brand.uid,
                     "name": feat[i].items.manufacturer.name,
                     "octopart_url": feat[i].items.octopart_url
