@@ -42,9 +42,9 @@
                 
                 tableData.push({
 
-                    "uid": feat[i].item.brand.uid,
-                    "name": feat[i].item.manufacturer.name,
-                    "octopart_url": feat[i].item.octopart_url
+                    "uid": feat[i].items.brand.uid,
+                    "name": feat[i].items.manufacturer.name,
+                    "octopart_url": feat[i].items.octopart_url
                    
                 });
             }
