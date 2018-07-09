@@ -28,7 +28,7 @@
     // Download the data
     myConnector.getData = function(table, doneCallback) {
         var mpnObj = JSON.parse(tableau.connectionData),
-            mpn = mpnObj.part-num,
+            mpn = mpnObj.part,
             apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22" +mpn+ "%22%7d%5d&pretty_print=true&include[]=specs,reference_designs,datasheets,compliance_documents,cad_models,%20descriptions,category_uids&callback=?";
 
         $.getJSON(apiCall, function(resp) {
@@ -59,7 +59,7 @@
     $(document).ready(function() {
         $("#submitButton").click(function() {
             var mpnObj = {
-                mpn: $('#part-num').val().trim(),
+                mpn: $('#part').val().trim(),
                 
             };        
                 tableau.connectionData = JSON.stringify(mpnObj); // Use this variable to pass data to your getSchema and getData functions
