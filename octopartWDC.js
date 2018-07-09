@@ -39,9 +39,9 @@
             for (var i = 0, len = feat.length; i < len; i++) {
                 tableau.log(apiCall)
                 tableData.push({
-                    "uid": feat[i].items.brand.uid,
-                    "name": feat[i].items.manufacturer.name,
-                    "octopart_url": feat[i].items.octopart_url
+                    "uid": feat[i].items[i].brand.uid,//HOW TO DIVIDE THE ITEMS???
+                    "name": feat[i].items[i].manufacturer.name,
+                    "octopart_url": feat[i].items[i].octopart_url
                    
                 });
             }
