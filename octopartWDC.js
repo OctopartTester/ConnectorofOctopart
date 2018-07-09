@@ -27,8 +27,11 @@
 
     // Download the data
     myConnector.getData = function(table, doneCallback) {
+        var mpnObj = JSON.parse(tableau.connectionData),
+            mpn = mpnObj.startDate,
+            apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22" +mpn+ "%22%7d%5d&pretty_print=true&include[]=specs,reference_designs,datasheets,compliance_documents,cad_models,%20descriptions,category_uids&callback=?";
 
-        $.getJSON("https://octopart.com/api/v3/parts/search?q=texas&apikey=80dfab31&callback=?", function(resp) {
+        $.getJSON(apiCall, function(resp) {
             var feat = resp.results,
                 tableData = [];
                  
