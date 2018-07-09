@@ -5,6 +5,9 @@
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
         var cols = [{
+            id: "uid",
+            dataType: tableau.dataTypeEnum.string
+        },{
             id: "name",
             alias: "manufacturer",
             dataType: tableau.dataTypeEnum.string
@@ -28,17 +31,16 @@
             partNum = mpnObj.part,
             apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22" +partNum+ "%22%7d%5d&pretty_print=true&include[]=specs,reference_designs,datasheets,compliance_documents,cad_models,%20descriptions,category_uids&callback=?";
         $.getJSON(apiCall, function(resp) {
-            tableau.log(apiCall)
+            
             var feat = resp.results,
                 tableData = [];
-                 
-                 
+                 tableau.log(feat[i].items.brand.uid)
             // Iterate over the JSON object
             for (var i = 0, len = feat.length; i < len; i++) {
                 
                 tableData.push({
 
-                    
+                    "uid": feat[i].items.brand.uid,
                     "name": feat[i].items.manufacturer.name,
                     "octopart_url": feat[i].items.octopart_url
                    
