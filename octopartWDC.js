@@ -37,7 +37,7 @@
                 
             // Iterate over the JSON object
             for (var i = 0, len = feat.length; i < len; i++) {
-                
+                tableau.log(apiCall)
                 tableData.push({
                     "uid": feat[i].items.brand.uid,
                     "name": feat[i].items.manufacturer.name,
