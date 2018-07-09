@@ -28,7 +28,7 @@
     // Download the data
     myConnector.getData = function(table, doneCallback) {
         var mpnObj = JSON.parse(tableau.connectionData),
-            mpn = mpnObj.startDate,
+            mpn = mpnObj.part-num,
             apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22" +mpn+ "%22%7d%5d&pretty_print=true&include[]=specs,reference_designs,datasheets,compliance_documents,cad_models,%20descriptions,category_uids&callback=?";
 
         $.getJSON(apiCall, function(resp) {
@@ -58,8 +58,18 @@
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
         $("#submitButton").click(function() {
-            tableau.connectionName = "Octopart Data"; // This will be the data source name in Tableau
-            tableau.submit(); // This sends the connector object to Tableau
+            var mpnObj = {
+                mpn: $('#part-num').val().trim(),
+                
+            };
+
+           
+
+        
+                tableau.connectionData = JSON.stringify(dateObj); // Use this variable to pass data to your getSchema and getData functions
+                tableau.connectionName = "Octopart Source"; // This will be the data source name in Tableau
+                tableau.submit(); // This sends the connector object to Tableau
+            
         });
     });
 })();
