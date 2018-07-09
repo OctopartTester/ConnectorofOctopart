@@ -61,12 +61,8 @@
             var mpnObj = {
                 mpn: $('#part-num').val().trim(),
                 
-            };
-
-           
-
-        
-                tableau.connectionData = JSON.stringify(dateObj); // Use this variable to pass data to your getSchema and getData functions
+            };        
+                tableau.connectionData = JSON.stringify(mpnObj); // Use this variable to pass data to your getSchema and getData functions
                 tableau.connectionName = "Octopart Source"; // This will be the data source name in Tableau
                 tableau.submit(); // This sends the connector object to Tableau
             
