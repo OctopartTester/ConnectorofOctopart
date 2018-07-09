@@ -43,7 +43,6 @@
                     "octopart_url": feat[i].item.octopart_url
                    
                 });
-                tableau.log('after te push')
             }
 
             table.appendRows(tableData);
