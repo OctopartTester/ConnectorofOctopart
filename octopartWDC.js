@@ -5,20 +5,32 @@
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
         var cols = [{
-            id: "uid",
+            id: "mpn",
+            dataType: tableau.dataTypeEnum.string
+        },{
+            id: "name",
+            alias: "brand",
             dataType: tableau.dataTypeEnum.string
         },{
             id: "name",
             alias: "manufacturer",
             dataType: tableau.dataTypeEnum.string
-        }, {
-            id:"octopart_url",
+        },{
+            id: "sku",
+            dataType: tableau.dataTypeEnum.string
+        },{
+            id: "name",
+            alias: "Seller Name",
+            dataType: tableau.dataTypeEnum.string
+        },{
+            id: "1",
+            alias: "USD",
             dataType: tableau.dataTypeEnum.string
         }];
 
         var tableSchema = {
             id: "octopart",
-            alias: "Part Data with texas in the name",
+            alias: "Part Data Search by MPN",
             columns: cols
         };
 
@@ -28,23 +40,66 @@
     // Download the data
     myConnector.getData = function(table, doneCallback) {
         var mpnObj = JSON.parse(tableau.connectionData),
-            partNum = mpnObj.part,
-            apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22"+partNum+"%22%7d%5d&include%5b%5d=specs,reference_designs,datasheets,compliance_documents,cad_models,%20descriptions,category_uids&callback=?";
+            partNum = mpnObj.partNum,
+            apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22"+partNum+"%22%7d%5d&include%5b%5d=specs,compliance_documents,&callback=?";
         $.getJSON(apiCall, function(resp) {
-            
+            tableau.log(apiCall)
             var feat = resp.results,
                 tableData = [];
-                
+               
             // Iterate over the JSON object
-            for (var i = 0, len = feat.length; i < len; i++) {
-                tableau.log(apiCall)
-                tableData.push({
-                    "uid": feat[i].items[i].brand.uid,//HOW TO DIVIDE THE ITEMS???
-                    "name": feat[i].items[i].manufacturer.name,
-                    "octopart_url": feat[i].items[i].octopart_url
+            // for (var i = 0, len = feat[0].items.length; i < len; i++) {
+                
+            //     tableData.push({
+            //         "mpn": feat[0].items[i].mpn,
+            //         "uid": feat[0].items[i].brand.name,
+            //         "name": feat[0].items[i].manufacturer.name
+                    
                    
+            //     });
+            // }
+
+            for (var i = 0, len = feat[0].items.length; i < len; i++) {
+
+                for (var j = 0, len = feat[0].items[i].offers.length; j < len; j++){
+                    // tableau.log(feat[0].items[i].offers[j].prices.USD)
+
+                    // for (var k = 0, len = feat[0].items[i].offers[j].prices.USD.length; k < len; k++){   
+
+                        tableData.push({
+                            "mpn": feat[0].items[i].mpn,
+                            "name": feat[0].items[i].brand.name,
+                            "name": feat[0].items[i].manufacturer.name,
+                            "sku" : feat[0].items[i].offers[j].sku,
+                            "name" : feat[0].items[i].offers[j].seller.name
+                            // "1" : feat[0].items[i].offers[j].prices.USD[k][1]
                 });
+                // }
+                }
             }
+
+
+            // for (var i = 0, len = feat[0].items.length; i < len; i++) {
+            //     for (var j = 0, len = feat[0].items[i].offers.length; j < len; j++){
+            //         for (var k = 0, len = feat[0].items[i].offers[k].sellers.length; k < len; k++){
+            //             tableData.push({
+            //                 "mpn": feat[0].items[i].mpn,
+            //                 "uid": feat[0].items[i].brand.name,
+            //                 "name": feat[0].items[i].manufacturer.name,
+            //                 "sku" : feat[0].items[i].offers[j].sku
+            //     });
+            //         }
+            //         for (var l = 0, len = feat[0].items[i].offers[k].prices.length; l < len; l++){
+            //             for (var m = 0, len = feat[0].items[i].offers[k].USD[l].length; m < len; m++){
+            //             tableData.push({
+            //                 "name":feat[0].items[i].offers[k].name,
+            //                 "1" : feat[0].items[i].offers[k].prices.USD[m].'1'
+            //     });
+            //         }
+            //         }
+            //     }
+                
+            // }
 
             table.appendRows(tableData);
             doneCallback();
