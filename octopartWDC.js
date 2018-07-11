@@ -8,12 +8,12 @@
             id: "mpn",
             dataType: tableau.dataTypeEnum.string
         },{
-            id: "name",
+            id: "brand_name",
             alias: "brand",
             dataType: tableau.dataTypeEnum.string
         },{
-            id: "name",
-            alias: "manufacturer",
+            id: "manufacturer",
+            
             dataType: tableau.dataTypeEnum.string
         },{
             id: "sku",
@@ -68,8 +68,8 @@
 
                         tableData.push({
                             "mpn": feat[0].items[i].mpn,
-                            "name": feat[0].items[i].brand.name,
-                            "name": feat[0].items[i].manufacturer.name,
+                            "brand_name": feat[0].items[i].brand.name,
+                            "manufacturer": feat[0].items[i].manufacturer.name,
                             "sku" : feat[0].items[i].offers[j].sku,
                             "name" : feat[0].items[i].offers[j].seller.name
                             // "1" : feat[0].items[i].offers[j].prices.USD[k][1]
