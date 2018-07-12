@@ -22,6 +22,10 @@
             id: "seller_name",
             alias: "Seller Name",
             dataType: tableau.dataTypeEnum.string
+        },{
+            id: "USD",
+            
+            dataType: tableau.dataTypeEnum.string
         }];
 
         var tableSchema = {
@@ -67,22 +71,28 @@
             tableau.log(apiCall)
             var feat = resp.results,
                 tableData = [];
-               
+               // tableau.log(feat[2].items[1].offers[0].prices.USD.length)
+               tableau.log('test')
             // Iterate over the JSON object
             for (var i = 0, len = feat.length; i < len; i++) {
                 for (var j = 0, len2 = feat[i].items.length; j < len2; j++){
                     for (var k = 0, len3 = feat[i].items[j].offers.length; k < len3; k++){
-                        // for (var l = 0, len4 = feat[i].items[j].offers[k].prices.USD.length; l < len4; l++){
+                        if((typeof(feat[i].items[j].offers[k].prices) !== 'undefined') && (typeof(feat[i].items[j].offers[k].prices.USD) !== 'undefined')){
+                            for (var l = 0, len4 = feat[i].items[j].offers[k].prices.USD.length; l < len4; l++){
                             tableau.log("loop")
                             tableData.push({
-                            "mpn": feat[i].items[j].mpn,
-                            "brand_name": feat[i].items[j].brand.name,
-                            "manufacturer": feat[i].items[j].manufacturer.name,
-                            "sku" : feat[i].items[j].offers[k].sku,
-                            "seller_name" : feat[i].items[j].offers[k].seller.name
-                            // "USD" : feat[i].items[j].offers[k].prices.USD[l][1]       
-                });
-                        // }
+                                "mpn": feat[i].items[j].mpn,
+                                "brand_name": feat[i].items[j].brand.name,
+                                "manufacturer": feat[i].items[j].manufacturer.name,
+                                "sku" : feat[i].items[j].offers[k].sku,
+                                "seller_name" : feat[i].items[j].offers[k].seller.name,
+                                "USD" : feat[i].items[j].offers[k].prices.USD[l][1]
+                                   
+                                });
+                            }
+                        }
+
+                        
                     }
                     
                 }
