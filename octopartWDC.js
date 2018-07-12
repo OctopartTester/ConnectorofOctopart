@@ -24,7 +24,6 @@
             dataType: tableau.dataTypeEnum.string
         },{
             id: "USD",
-            
             dataType: tableau.dataTypeEnum.string
         }];
 
@@ -99,45 +98,7 @@
                 
             }
 
-            // for (var i = 0, len = feat[i].items.length; i < len; i++) {
-
-            //     for (var j = 0, len = feat[i].items[j].offers.length; j < len; j++){
-            //         // tableau.log(feat[0].items[i].offers[j].prices.USD)
-
-            //         // for (var k = 0, len = feat[0].items[i].offers[j].prices.USD.length; k < len; k++){   
-
-            //             tableData.push({
-            //                 "mpn": feat[i].items[j].mpn,
-            //                 "brand_name": feat[i].items[j].brand.name,
-            //                 "manufacturer": feat[i].items[j].manufacturer.name
-            //                 // "sku" : feat[0].items[i].offers[j].sku,
-            //                 // "name" : feat[0].items[i].offers[j].seller.name
-            //                 // "1" : feat[0].items[i].offers[j].prices.USD[k][1]
-            //     });
-            //     // }
-            //     }
-            // }
-
-
-            // for (var i = 0, len = feat[0].items.length; i < len; i++) {
-            //     for (var j = 0, len = feat[0].items[i].offers.length; j < len; j++){
-            //         for (var k = 0, len = feat[0].items[i].offers[k].sellers.length; k < len; k++){
-            //             tableData.push({
-            //                 "mpn": feat[0].items[i].mpn,
-            //                 "uid": feat[0].items[i].brand.name,
-            //                 "name": feat[0].items[i].manufacturer.name,
-            //                 "sku" : feat[0].items[i].offers[j].sku
-            //     });
-            //         }
-            //         for (var l = 0, len = feat[0].items[i].offers[k].prices.length; l < len; l++){
-            //             for (var m = 0, len = feat[0].items[i].offers[k].USD[l].length; m < len; m++){
-            //             tableData.push({
-            //                 "name":feat[0].items[i].offers[k].name,
-            //                 "1" : feat[0].items[i].offers[k].prices.USD[m].'1'
-            //     });
-            //         }
-            //         }
-            //     }
+           
                 
             // }
 
