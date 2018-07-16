@@ -101,7 +101,7 @@
             tableau.log('end first getJSON')
 
         });
-
+        doneCallback();
        
 
         if (partTwo){
@@ -134,7 +134,9 @@
             }
 
             table.appendRows(tableData2);
+
         });
+            doneCallback();
             }
 
             if (partThree){
@@ -168,6 +170,7 @@
 
             table.appendRows(tableData3);
         });
+            doneCallback();
             }
 
             if (partFour){
@@ -201,6 +204,7 @@
 
             table.appendRows(tableData4);
         });
+            doneCallback();
             }
 
             if (partFive){
@@ -234,8 +238,9 @@
 
             table.appendRows(tableData5);
         });
+doneCallback();
             }
-            doneCallback();
+            
             
     };
 
