@@ -47,7 +47,7 @@
             partFour = mpnObj.partFour, 
             partFive = mpnObj.partFive;
             // apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&include%5b%5d=specs,compliance_documents,&callback=?&queries=%5b%7b%22mpn%22:%22"+partOne+"%22%7d,"
-            apiCallOne = "http://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partOne+ "%27"
+            apiCallOne = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partOne+ "%27"
             // apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22"+partOne+"%22%7d%";
             
             // if (partThree){
@@ -106,7 +106,7 @@
 
         if (partTwo){
             tableau.log('begin second loop')
-            apiCallTwo = "http://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
+            apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
             apiCallTwo += end;
             $.getJSON(apiCallTwo, function(resp) {
                 tableau.log(apiCallTwo)
@@ -139,7 +139,7 @@
 
             if (partThree){
             tableau.log('begin second loop')
-            apiCallThree = "http://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partThree+ "%27"
+            apiCallThree = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partThree+ "%27"
             apiCallThree += end;
             $.getJSON(apiCallThree, function(resp) {
                 tableau.log(apiCallThree)
@@ -172,7 +172,7 @@
 
             if (partFour){
             tableau.log('begin fourth loop')
-            apiCallFour = "http://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partFour+ "%27"
+            apiCallFour = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partFour+ "%27"
             apiCallFour += end;
             $.getJSON(apiCallFour, function(resp) {
                 tableau.log(apiCallFour)
@@ -205,7 +205,7 @@
 
             if (partFive){
             tableau.log('begin second loop')
-            apiCallFive = "http://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partFive+ "%27"
+            apiCallFive = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partFive+ "%27"
             apiCallFive += end;
             $.getJSON(apiCallTwo, function(resp) {
                 tableau.log(apiCallFive)
