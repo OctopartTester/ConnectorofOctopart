@@ -56,8 +56,8 @@
             tableData3= [];
             tableData4= [];
             tableData5= [];
-
-
+            counter = 1;
+while (counter < 3){
         $.getJSON(apiCallOne, function(resp) {
             tableau.log(apiCallOne)
             var feat = resp.results,
@@ -86,6 +86,7 @@
             
             table.appendRows(tableData1);
             tableau.log('end first getJSON')
+            counter ++;
         });
         // doneCallback();
        
@@ -123,8 +124,9 @@
 
         });
             doneCallback();
+            counter++;
             }
-
+}//while loop
             
             
     };
