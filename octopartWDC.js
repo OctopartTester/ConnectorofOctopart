@@ -57,7 +57,7 @@
             tableData4= [];
             tableData5= [];
             counter = 1;
-while (counter < 3){
+
         $.getJSON(apiCallOne, function(resp) {
             tableau.log(apiCallOne)
             var feat = resp.results,
@@ -86,7 +86,6 @@ while (counter < 3){
             
             table.appendRows(tableData1);
             tableau.log('end first getJSON')
-            counter ++;
         });
         // doneCallback();
        
@@ -123,14 +122,12 @@ while (counter < 3){
             table.appendRows(tableData2);
 
         });
-            doneCallback();
-            counter++;
             }
-}//while loop
-            
-            
-    };
 
+            
+         doneCallback();   
+    };
+    
     tableau.registerConnector(myConnector);
 
     // Create event listeners for when the user submits the form
