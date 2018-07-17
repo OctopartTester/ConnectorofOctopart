@@ -58,7 +58,7 @@ $.ajaxSetup({async: false});
             tableData4= [];
             tableData5= [];
             counter = 1;
-if(partOne){
+// if(partOne){
         $.getJSON(apiCallOne, function(resp) {
             tableau.log(apiCallOne)
             var feat = resp.results,
@@ -89,9 +89,9 @@ if(partOne){
             tableau.log('end first getJSON')
         });
         // doneCallback();
-       }
+       // }if statement
 
-        if (partTwo){
+        // if (partTwo){
             tableau.log('begin second loop')
             apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
             apiCallTwo += end;
@@ -124,7 +124,7 @@ if(partOne){
 
         });
             doneCallback();
-            }
+            // }if statement
 
             
             
