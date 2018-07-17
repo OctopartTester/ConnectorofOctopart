@@ -120,9 +120,9 @@
             }
 
             table.appendRows(tableData2);
-doneCallback();
+
         });
-            
+            doneCallback();
             }
 
             
