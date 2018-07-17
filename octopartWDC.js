@@ -40,6 +40,7 @@
 
     // Download the data
     myConnector.getData = function(table, doneCallback) {
+        $.ajaxSetup({async: false});
         var mpnObj = JSON.parse(tableau.connectionData),
             partOne = mpnObj.partOne, 
             partTwo = mpnObj.partTwo, 
@@ -122,12 +123,13 @@
             table.appendRows(tableData2);
 
         });
+            doneCallback();
             }
 
             
-         doneCallback();   
+            
     };
-    
+
     tableau.registerConnector(myConnector);
 
     // Create event listeners for when the user submits the form
