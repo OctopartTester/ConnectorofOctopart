@@ -1,7 +1,7 @@
 (function() {
     // Create the connector object
     var myConnector = tableau.makeConnector();
-$.ajaxSetup({async: false});
+
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
         var colsOne = [{
@@ -58,7 +58,7 @@ $.ajaxSetup({async: false});
             tableData4= [];
             tableData5= [];
             counter = 1;
-// if(partOne){
+
         $.getJSON(apiCallOne, function(resp) {
             tableau.log(apiCallOne)
             var feat = resp.results,
@@ -89,7 +89,7 @@ $.ajaxSetup({async: false});
             tableau.log('end first getJSON')
         });
         // doneCallback();
-       // }
+       
 
         if (partTwo){
             tableau.log('begin second loop')
