@@ -55,9 +55,9 @@
             tableData3= [];
             tableData4= [];
             tableData5= [];
-        $.getJSON(apiCallOne, function(resp) {
+        $.getJSON(apiCallOne, function(resp1) {
             tableau.log(apiCallOne)
-            var feat = resp.results,
+            var feat = resp1.results,
                 tableData1 = [];
                // tableau.log(feat[2].items[1].offers[0].prices.USD.length)
           
