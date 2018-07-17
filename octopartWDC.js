@@ -99,7 +99,7 @@
             
             table.appendRows(tableData1);
             tableau.log('end first getJSON')
-doneCallback();
+            doneCallback();
         });
         
        
@@ -137,7 +137,7 @@ doneCallback();
             doneCallback();
         });
             
-            }
+            
 
         //     if (partThree){
         //     tableau.log('begin second loop')
