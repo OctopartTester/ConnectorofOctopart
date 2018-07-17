@@ -46,8 +46,23 @@
             partThree = mpnObj.partThree, 
             partFour = mpnObj.partFour, 
             partFive = mpnObj.partFive;
+            // apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&include%5b%5d=specs,compliance_documents,&callback=?&queries=%5b%7b%22mpn%22:%22"+partOne+"%22%7d,"
             apiCallOne = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partOne+ "%27"
-
+            // apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22"+partOne+"%22%7d%";
+            
+            // if (partThree){
+            //     apiCall += ",{%22mpn%22:%22"+partThree+"%22}"
+            // }
+            // if (partFour){
+            //     apiCall += ",{%22mpn%22:%22"+partFour+"%22}"
+            // }
+            // if (partFive){
+            //     apiCall += ",{%22mpn%22:%22"+partFive+"%22}"
+            // }
+            // apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22"+partOne+"%22%7d%5d&include%5b%5d=specs,compliance_documents,&callback=?";
+            // apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22"+partOne+"%22%7d%";
+            // apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=[{%22mpn%22:%22SN74S74N%22},{%22mpn%22:%22MS15795-803%22}]&pretty_print=true"
+            // end = "%5d&include%5b%5d=specs,compliance_documents,&callback=?";
             end = "]&callback=?"
             apiCallOne += end;
             tableData1= [];
@@ -55,10 +70,9 @@
             tableData3= [];
             tableData4= [];
             tableData5= [];
-
-        $.getJSON(apiCallOne, function(resp1) {
+        $.getJSON(apiCallOne, function(resp) {
             tableau.log(apiCallOne)
-            var feat = resp1.results,
+            var feat = resp.results,
                 tableData1 = [];
                // tableau.log(feat[2].items[1].offers[0].prices.USD.length)
           
@@ -85,9 +99,9 @@
             
             table.appendRows(tableData1);
             tableau.log('end first getJSON')
-            
+
         });
-        
+        doneCallback();
        
 
         if (partTwo){
@@ -120,13 +134,15 @@
             }
 
             table.appendRows(tableData2);
-            
+
         });
+            doneCallback();
+            }
+
             
-      }
-         doneCallback(); 
+            
     };
-    
+
     tableau.registerConnector(myConnector);
 
     // Create event listeners for when the user submits the form
