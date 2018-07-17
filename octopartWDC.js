@@ -40,7 +40,6 @@
 
     // Download the data
     myConnector.getData = function(table, doneCallback) {
-        $.ajaxSetup({async: false});
         var mpnObj = JSON.parse(tableau.connectionData),
             partOne = mpnObj.partOne, 
             partTwo = mpnObj.partTwo, 
@@ -57,7 +56,7 @@
             tableData3= [];
             tableData4= [];
             tableData5= [];
-            counter = 1;
+
 
         $.getJSON(apiCallOne, function(resp) {
             tableau.log(apiCallOne)
