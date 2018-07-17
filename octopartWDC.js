@@ -58,7 +58,7 @@ $.ajaxSetup({async: false});
             tableData4= [];
             tableData5= [];
             counter = 1;
-// if(partOne){
+if(partOne){
         $.getJSON(apiCallOne, function(resp) {
             tableau.log(apiCallOne)
             var feat = resp.results,
@@ -89,7 +89,7 @@ $.ajaxSetup({async: false});
             tableau.log('end first getJSON')
         });
         // doneCallback();
-       // }if statement
+       }
 
         if (partTwo){
             tableau.log('begin second loop')
