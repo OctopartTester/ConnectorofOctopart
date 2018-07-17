@@ -91,7 +91,7 @@ $.ajaxSetup({async: false});
         // doneCallback();
        // }if statement
 
-        // if (partTwo){
+        if (partTwo){
             tableau.log('begin second loop')
             apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
             apiCallTwo += end;
@@ -124,7 +124,7 @@ $.ajaxSetup({async: false});
 
         });
             doneCallback();
-            // }if statement
+            }
 
             
             
