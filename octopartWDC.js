@@ -137,7 +137,7 @@
             doneCallback();
         });
             
-            
+            }
 
         //     if (partThree){
         //     tableau.log('begin second loop')
