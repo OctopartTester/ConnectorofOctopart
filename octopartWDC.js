@@ -55,10 +55,9 @@
             tableData3= [];
             tableData4= [];
             tableData5= [];
-
-        $.getJSON(apiCallOne, function(resp1) {
+        $.getJSON(apiCallOne, function(resp) {
             tableau.log(apiCallOne)
-            var feat = resp1.results,
+            var feat = resp.results,
                 tableData1 = [];
                // tableau.log(feat[2].items[1].offers[0].prices.USD.length)
           
@@ -85,7 +84,7 @@
             
             table.appendRows(tableData1);
             tableau.log('end first getJSON')
-            
+            doneCallback();
         });
         
        
@@ -126,7 +125,7 @@
       }
           
     };
-    
+
     tableau.registerConnector(myConnector);
 
     // Create event listeners for when the user submits the form
