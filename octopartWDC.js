@@ -46,8 +46,23 @@
             partThree = mpnObj.partThree, 
             partFour = mpnObj.partFour, 
             partFive = mpnObj.partFive;
+            // apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&include%5b%5d=specs,compliance_documents,&callback=?&queries=%5b%7b%22mpn%22:%22"+partOne+"%22%7d,"
             apiCallOne = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partOne+ "%27"
-
+            // apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22"+partOne+"%22%7d%";
+            
+            // if (partThree){
+            //     apiCall += ",{%22mpn%22:%22"+partThree+"%22}"
+            // }
+            // if (partFour){
+            //     apiCall += ",{%22mpn%22:%22"+partFour+"%22}"
+            // }
+            // if (partFive){
+            //     apiCall += ",{%22mpn%22:%22"+partFive+"%22}"
+            // }
+            // apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22"+partOne+"%22%7d%5d&include%5b%5d=specs,compliance_documents,&callback=?";
+            // apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=%5b%7b%22mpn%22:%22"+partOne+"%22%7d%";
+            // apiCall = "https://octopart.com/api/v3/parts/match?apikey=80dfab31&queries=[{%22mpn%22:%22SN74S74N%22},{%22mpn%22:%22MS15795-803%22}]&pretty_print=true"
+            // end = "%5d&include%5b%5d=specs,compliance_documents,&callback=?";
             end = "]&callback=?"
             apiCallOne += end;
             tableData1= [];
@@ -84,9 +99,9 @@
             
             table.appendRows(tableData1);
             tableau.log('end first getJSON')
-            doneCallback();
+
         });
-        
+        doneCallback();
        
 
         if (partTwo){
@@ -119,11 +134,114 @@
             }
 
             table.appendRows(tableData2);
-            
+
         });
+            doneCallback();
+            }
+
+            if (partThree){
+            tableau.log('begin second loop')
+            apiCallThree = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partThree+ "%27"
+            apiCallThree += end;
+            $.getJSON(apiCallThree, function(resp) {
+                tableau.log(apiCallThree)
+                var feat = resp.results,
+                    tableData3= [];            
+                    
+                     for (var i = 0, len = feat.length; i < len; i++) {
+                        for (var k = 0, len3 = feat[i].item.offers.length; k < len3; k++){
+                            if((typeof(feat[i].item.offers[k].prices) !== 'undefined') && (typeof(feat[i].item.offers[k].prices.USD) !== 'undefined')){
+                                for (var l = 0, len4 = feat[i].item.offers[k].prices.USD.length; l < len4; l++){
+                                tableau.log("loop3")
+                                tableData3.push({
+                                    "mpn": feat[i].item.mpn,
+                                    "brand_name": feat[i].item.brand.name,
+                                    "manufacturer": feat[i].item.manufacturer.name,
+                                    "sku" : feat[i].item.offers[k].sku,
+                                    "seller_name" : feat[i].item.offers[k].seller.name,
+                                    "USD" : feat[i].item.offers[k].prices.USD[l][1]
+                                   
+                                });
+                            }
+                        }            
+                }
+                
+            }
+
+            table.appendRows(tableData3);
+        });
+            doneCallback();
+            }
+
+            if (partFour){
+            tableau.log('begin fourth loop')
+            apiCallFour = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partFour+ "%27"
+            apiCallFour += end;
+            $.getJSON(apiCallFour, function(resp) {
+                tableau.log(apiCallFour)
+                var feat = resp.results,
+                    tableData4= [];            
+                    
+                     for (var i = 0, len = feat.length; i < len; i++) {
+                        for (var k = 0, len3 = feat[i].item.offers.length; k < len3; k++){
+                            if((typeof(feat[i].item.offers[k].prices) !== 'undefined') && (typeof(feat[i].item.offers[k].prices.USD) !== 'undefined')){
+                                for (var l = 0, len4 = feat[i].item.offers[k].prices.USD.length; l < len4; l++){
+                                tableau.log("loop4")
+                                tableData4.push({
+                                    "mpn": feat[i].item.mpn,
+                                    "brand_name": feat[i].item.brand.name,
+                                    "manufacturer": feat[i].item.manufacturer.name,
+                                    "sku" : feat[i].item.offers[k].sku,
+                                    "seller_name" : feat[i].item.offers[k].seller.name,
+                                    "USD" : feat[i].item.offers[k].prices.USD[l][1]
+                                   
+                                });
+                            }
+                        }            
+                }
+                
+            }
+
+            table.appendRows(tableData4);
+        });
+            doneCallback();
+            }
+
+            if (partFive){
+            tableau.log('begin second loop')
+            apiCallFive = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partFive+ "%27"
+            apiCallFive += end;
+            $.getJSON(apiCallTwo, function(resp) {
+                tableau.log(apiCallFive)
+                var feat = resp.results,
+                    tableData5= [];            
+                    
+                     for (var i = 0, len = feat.length; i < len; i++) {
+                        for (var k = 0, len3 = feat[i].item.offers.length; k < len3; k++){
+                            if((typeof(feat[i].item.offers[k].prices) !== 'undefined') && (typeof(feat[i].item.offers[k].prices.USD) !== 'undefined')){
+                                for (var l = 0, len4 = feat[i].item.offers[k].prices.USD.length; l < len4; l++){
+                                tableau.log("loop5")
+                                tableData5.push({
+                                    "mpn": feat[i].item.mpn,
+                                    "brand_name": feat[i].item.brand.name,
+                                    "manufacturer": feat[i].item.manufacturer.name,
+                                    "sku" : feat[i].item.offers[k].sku,
+                                    "seller_name" : feat[i].item.offers[k].seller.name,
+                                    "USD" : feat[i].item.offers[k].prices.USD[l][1]
+                                   
+                                });
+                            }
+                        }            
+                }
+                
+            }
+
+            table.appendRows(tableData5);
+        });
+doneCallback();
+            }
             
-      }
-          
+            
     };
 
     tableau.registerConnector(myConnector);
