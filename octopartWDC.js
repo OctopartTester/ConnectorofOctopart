@@ -55,6 +55,7 @@
             tableData3= [];
             tableData4= [];
             tableData5= [];
+
         $.getJSON(apiCallOne, function(resp1) {
             tableau.log(apiCallOne)
             var feat = resp1.results,
@@ -123,9 +124,9 @@
         });
             
       }
-          
+         doneCallback(); 
     };
-
+    
     tableau.registerConnector(myConnector);
 
     // Create event listeners for when the user submits the form
