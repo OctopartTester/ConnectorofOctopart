@@ -150,7 +150,7 @@
 
 
             });
-                break;
+
                 apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
                 apiCallTwo += end;
                 $.getJSON(apiCallTwo, function(resp) {
@@ -180,6 +180,7 @@
 
             table.appendRows(tableData2);
             doneCallback();
+            break;
         });
             default:
                 tableau.log("defaulted")
