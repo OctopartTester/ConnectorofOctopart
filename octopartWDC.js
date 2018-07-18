@@ -111,7 +111,7 @@
                 table.appendRows(tableData1);
                 tableau.log('end first getJSON')
                 doneCallback();
-                break;
+                
             });
 
             case 2:
@@ -180,8 +180,9 @@
 
             table.appendRows(tableData2);
             doneCallback();
-            break;
+            
         });
+            break;
             default:
                 tableau.log("defaulted")
         }
