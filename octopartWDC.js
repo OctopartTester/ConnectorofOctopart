@@ -174,11 +174,11 @@
             }
 
             table.appendRows(tableData2);
-            doneCallback();
+            
         });
             default:
                 tableau.log("defaulted")
-        }
+        }doneCallback();
         
         
     
