@@ -146,9 +146,10 @@
                 }
                 
                 table.appendRows(tableData1);
-                    $.getJSON(apiCallTwo, function(resp) {
+
+                    $.getJSON(apiCallTwo, function(resp1) {
                 tableau.log(apiCallTwo)
-                var feat = resp.results,
+                var feat = resp1.results,
                     tableData2= [];            
                     
                      for (var i = 0, len = feat.length; i < len; i++) {
