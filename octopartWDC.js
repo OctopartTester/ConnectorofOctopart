@@ -146,10 +146,17 @@
                 }
                 
                 table.appendRows(tableData1);
+                tableau.log('end first getJSON')
+                doneCallback();
 
-                    $.getJSON(apiCallTwo, function(resp1) {
+
+
+            });
+
+                
+                $.getJSON(apiCallTwo, function(resp) {
                 tableau.log(apiCallTwo)
-                var feat = resp1.results,
+                var feat = resp.results,
                     tableData2= [];            
                     
                      for (var i = 0, len = feat.length; i < len; i++) {
@@ -172,19 +179,10 @@
                 
             }
 
-            
-                
-                
-
             table.appendRows(tableData2);
-            
+            doneCallback();
             
         });
-                    
-            });
-doneCallback();
-                
-                
                 break;
             default:
                 tableau.log("defaulted")
