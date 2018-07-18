@@ -111,6 +111,7 @@
                 table.appendRows(tableData1);
                 tableau.log('end first getJSON')
                 doneCallback();
+                break;
             });
 
             case 2:
@@ -145,7 +146,11 @@
                 table.appendRows(tableData1);
                 tableau.log('end first getJSON')
                 doneCallback();
+
+
+
             });
+                break;
                 apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
                 apiCallTwo += end;
                 $.getJSON(apiCallTwo, function(resp) {
