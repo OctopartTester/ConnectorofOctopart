@@ -145,7 +145,7 @@
                     
                 }
                 
-                
+                table.appendRows(tableData1);
                     $.getJSON(apiCallTwo, function(resp) {
                 tableau.log(apiCallTwo)
                 var feat = resp.results,
@@ -171,8 +171,8 @@
                 
             }
 
-            table.appendRows(tableData1);
-                tableau.log('end first getJSON')
+            
+                
                 
 
             table.appendRows(tableData2);
