@@ -114,7 +114,7 @@
             });
 
             case 2:
-
+                tableau.log("this is now in case 2")
                 $.getJSON(apiCallOne, function(resp) {
                 tableau.log(apiCallOne)
                 var feat = resp.results,
@@ -174,7 +174,7 @@
             }
 
             table.appendRows(tableData2);
-           
+            doneCallback();
         });
             default:
                 tableau.log("defaulted")
