@@ -118,7 +118,7 @@
                 tableau.log("this is now in case 2")
                 apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
                 apiCallTwo += end;
-                $.getJSON(apiCallOne, function(resp) {
+                $.ajax(apiCallOne, function(resp) {
                 tableau.log(apiCallOne)
                 var feat = resp.results,
                     tableData1 = [];
