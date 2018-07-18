@@ -70,6 +70,7 @@
             tableData3= [];
             tableData4= [];
             tableData5= [];
+        if(partOne){
         $.getJSON(apiCallOne, function(resp) {
             tableau.log(apiCallOne)
             var feat = resp.results,
@@ -99,10 +100,10 @@
             
             table.appendRows(tableData1);
             tableau.log('end first getJSON')
-doneCallback();
+            doneCallback();
         });
         
-
+    }//if statement one
             
     };
 
