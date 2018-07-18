@@ -80,7 +80,7 @@
             tableau.log(check)
         switch(check){
             case 1:
-
+                tableau.log('now in case 1')
                 $.getJSON(apiCallOne, function(resp) {
                 tableau.log(apiCallOne)
                 var feat = resp.results,
