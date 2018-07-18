@@ -146,10 +146,9 @@
                 tableau.log('end first getJSON')
                 doneCallback();
             });
-
-                $.getJSON(apiCallTwo, function(resp) {
                 apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
                 apiCallTwo += end;
+                $.getJSON(apiCallTwo, function(resp) {
                 tableau.log(apiCallTwo)
                 var feat = resp.results,
                     tableData2= [];            
