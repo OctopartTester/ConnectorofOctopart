@@ -13,7 +13,6 @@
             dataType: tableau.dataTypeEnum.string
         },{
             id: "manufacturer",
-            
             dataType: tableau.dataTypeEnum.string
         },{
             id: "sku",
@@ -81,6 +80,7 @@
         switch(check){
             case 1:
                 tableau.log('now in case 1')
+                
                 $.getJSON(apiCallOne, function(resp) {
                 tableau.log(apiCallOne)
                 var feat = resp.results,
@@ -118,14 +118,12 @@
                 tableau.log("this is now in case 2")
                 apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
                 apiCallTwo += end;
-                $.ajax(apiCallOne, function(resp) {
-                tableau.log(apiCallOne)
-                var feat = resp.results,
-                    tableData1 = [];
-                   // tableau.log(feat[2].items[1].offers[0].prices.USD.length)
-              
-
-                     for (var i = 0, len = feat.length; i < len; i++) {
+                var $urlOne = apiCallOne;
+                var $urlTwo = apiCallTwo
+                $.when($.getJSON($urlOne), $.getJSON($urlTwo)).then(function(resp1,resp2){
+                    tableau.log(resp1);
+                    var feat = resp1[0].results
+                    for (var i = 0, len = feat.length; i < len; i++) {
                         for (var k = 0, len3 = feat[i].item.offers.length; k < len3; k++){
                             if((typeof(feat[i].item.offers[k].prices) !== 'undefined') && (typeof(feat[i].item.offers[k].prices.USD) !== 'undefined')){
                                 for (var l = 0, len4 = feat[i].item.offers[k].prices.USD.length; l < len4; l++){
@@ -143,23 +141,11 @@
                             }            
                     }
                     
-                }
-                
+                } //first for loop
+
                 table.appendRows(tableData1);
-                tableau.log('end first getJSON')
-                
-
-
-
-            });
-
-                
-                $.getJSON(apiCallTwo, function(resp) {
-                tableau.log(apiCallTwo)
-                var feat = resp.results,
-                    tableData2= [];            
-                    
-                     for (var i = 0, len = feat.length; i < len; i++) {
+                var feat = resp2[0].results
+                for (var i = 0, len = feat.length; i < len; i++) {
                         for (var k = 0, len3 = feat[i].item.offers.length; k < len3; k++){
                             if((typeof(feat[i].item.offers[k].prices) !== 'undefined') && (typeof(feat[i].item.offers[k].prices.USD) !== 'undefined')){
                                 for (var l = 0, len4 = feat[i].item.offers[k].prices.USD.length; l < len4; l++){
@@ -177,12 +163,80 @@
                         }            
                 }
                 
-            }
+            } //second for loop
 
             table.appendRows(tableData2);
             doneCallback();
+
+                }).fail(function(problem){
+                    tableau.log(problem);
+                })
+        //         $.getJSON(apiCallOne, function(resp) {
+        //         tableau.log(apiCallOne)
+        //         var feat = resp.results,
+        //             tableData1 = [];
+        //            // tableau.log(feat[2].items[1].offers[0].prices.USD.length)
+              
+
+        //              for (var i = 0, len = feat.length; i < len; i++) {
+        //                 for (var k = 0, len3 = feat[i].item.offers.length; k < len3; k++){
+        //                     if((typeof(feat[i].item.offers[k].prices) !== 'undefined') && (typeof(feat[i].item.offers[k].prices.USD) !== 'undefined')){
+        //                         for (var l = 0, len4 = feat[i].item.offers[k].prices.USD.length; l < len4; l++){
+        //                         tableau.log("loop1")
+        //                         tableData1.push({
+        //                             "mpn": feat[i].item.mpn,
+        //                             "brand_name": feat[i].item.brand.name,
+        //                             "manufacturer": feat[i].item.manufacturer.name,
+        //                             "sku" : feat[i].item.offers[k].sku,
+        //                             "seller_name" : feat[i].item.offers[k].seller.name,
+        //                             "USD" : feat[i].item.offers[k].prices.USD[l][1]
+                                       
+        //                             });
+        //                         }
+        //                     }            
+        //             }
+                    
+        //         }
+                
+        //         // table.appendRows(tableData1);
+                
+        //         tableau.log('end first getJSON')
+        //         doneCallback();
+
+
+
+        //     });
+
+                
+        //         $.getJSON(apiCallTwo, function(resp) {
+        //         tableau.log(apiCallTwo)
+        //         var feat = resp.results,
+        //             tableData2= [];            
+                    
+        //              for (var i = 0, len = feat.length; i < len; i++) {
+        //                 for (var k = 0, len3 = feat[i].item.offers.length; k < len3; k++){
+        //                     if((typeof(feat[i].item.offers[k].prices) !== 'undefined') && (typeof(feat[i].item.offers[k].prices.USD) !== 'undefined')){
+        //                         for (var l = 0, len4 = feat[i].item.offers[k].prices.USD.length; l < len4; l++){
+        //                         tableau.log("loop2")
+        //                         tableData2.push({
+        //                             "mpn": feat[i].item.mpn,
+        //                             "brand_name": feat[i].item.brand.name,
+        //                             "manufacturer": feat[i].item.manufacturer.name,
+        //                             "sku" : feat[i].item.offers[k].sku,
+        //                             "seller_name" : feat[i].item.offers[k].seller.name,
+        //                             "USD" : feat[i].item.offers[k].prices.USD[l][1]
+                                   
+        //                         });
+        //                     }
+        //                 }            
+        //         }
+                
+        //     }
+        //     // table.appendRows(tableData1);
+        //     // table.appendRows(tableData2);
+        //     // doneCallback();
             
-        });
+        // });
                 break;
             default:
                 tableau.log("defaulted")
