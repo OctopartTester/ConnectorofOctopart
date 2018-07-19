@@ -8,10 +8,6 @@
             id: "mpn",
             dataType: tableau.dataTypeEnum.string
         },{
-            id: "brand_name",
-            alias: "brand",
-            dataType: tableau.dataTypeEnum.string
-        },{
             id: "manufacturer",
             dataType: tableau.dataTypeEnum.string
         },{
@@ -43,10 +39,13 @@
             partThree = mpnObj.partThree, 
             partFour = mpnObj.partFour, 
             partFive = mpnObj.partFive;
-            apiCallOne = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partOne+ "%27"
-            apiCallTwo = 
-            end = "]&callback=?"
-            apiCallOne += end;
+            apiCallOne = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partOne+ "%27]&callback=?"
+            apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27]&callback=?"
+            apiCallThree = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partThree+ "%27]&callback=?"
+            apiCallFour = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partFour+ "%27]&callback=?"
+            apiCallFive = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partFive+ "%27]&callback=?"
+            // end = ""
+            // apiCallOne += end;
             tableData1= [];
             tableData2= [];
             tableData3= [];
@@ -86,7 +85,6 @@
                                 tableau.log("loop1")
                                 tableData1.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -106,9 +104,7 @@
             });
 
             case 2:
-                
-                apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
-                apiCallTwo += end;
+
                 var $urlOne = apiCallOne;
                 var $urlTwo = apiCallTwo
                 $.when($.getJSON($urlOne), $.getJSON($urlTwo)).then(function(resp1,resp2){
@@ -121,7 +117,6 @@
                                 tableau.log("loop1")
                                 tableData1.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -143,7 +138,6 @@
                                 tableau.log("loop2")
                                 tableData2.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -165,10 +159,6 @@
        
                 break;
             case 3:
-                 apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
-                 apiCallThree = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partThree+ "%27"
-                apiCallTwo += end;
-                apiCallThree += end;
                 var $urlOne = apiCallOne;
                 var $urlTwo = apiCallTwo;
                 var $urlThree = apiCallThree;
@@ -182,7 +172,6 @@
                                 tableau.log("loop1")
                                 tableData1.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -204,7 +193,6 @@
                                 tableau.log("loop2")
                                 tableData2.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -227,7 +215,6 @@
                                 tableau.log("loop2")
                                 tableData3.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -253,12 +240,6 @@
 
                 break;
             case 4:
-                apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
-                 apiCallThree = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partThree+ "%27"
-                 apiCallFour = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partFour+ "%27"
-                apiCallTwo += end;
-                apiCallThree += end;
-                apiCallFour +=end;
                 var $urlOne = apiCallOne;
                 var $urlTwo = apiCallTwo;
                 var $urlThree = apiCallThree;
@@ -273,7 +254,6 @@
                                 tableau.log("loop1")
                                 tableData1.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -295,7 +275,6 @@
                                 tableau.log("loop2")
                                 tableData2.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -318,7 +297,6 @@
                                 tableau.log("loop2")
                                 tableData3.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -341,7 +319,6 @@
                                 tableau.log("loop2")
                                 tableData4.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -364,14 +341,6 @@
 
                 break;
             case 5:
-                apiCallTwo = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partTwo+ "%27"
-                 apiCallThree = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partThree+ "%27"
-                 apiCallFour = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partFour+ "%27"
-                 apiCallFive = "https://octopart.com/api/v3/parts/search?apikey=80dfab31&q=%27"+partFive+ "%27"
-                apiCallTwo += end;
-                apiCallThree += end;
-                apiCallFour +=end;
-                apiCallFive +=end;
                 var $urlOne = apiCallOne;
                 var $urlTwo = apiCallTwo;
                 var $urlThree = apiCallThree;
@@ -387,7 +356,6 @@
                                 tableau.log("loop1")
                                 tableData1.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -409,7 +377,6 @@
                                 tableau.log("loop2")
                                 tableData2.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -432,7 +399,6 @@
                                 tableau.log("loop2")
                                 tableData3.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -455,7 +421,6 @@
                                 tableau.log("loop2")
                                 tableData4.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
@@ -478,7 +443,6 @@
                                 tableau.log("loop2")
                                 tableData5.push({
                                     "mpn": feat[i].item.mpn,
-                                    "brand_name": feat[i].item.brand.name,
                                     "manufacturer": feat[i].item.manufacturer.name,
                                     "sku" : feat[i].item.offers[k].sku,
                                     "seller_name" : feat[i].item.offers[k].seller.name,
